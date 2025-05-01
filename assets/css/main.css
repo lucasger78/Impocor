@@ -1,9 +1,9 @@
 
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Raleway",  sans-serif;
-  --nav-font: "Poppins",  sans-serif;
+  --default-font: "Montserrat", sans-serif,  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* --heading-font: "Raleway",  sans-serif;
+  --nav-font: "Poppins",  sans-serif; */
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -72,7 +72,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--heading-color);
+  color: var(--accent-color);
   font-family: var(--heading-font);
 }
 
@@ -378,6 +378,15 @@ h6 {
 /*--------------------------------------------------------------
 # Scroll About Button
 --------------------------------------------------------------*/
+.btn-about{
+  border-radius: 0px;
+  transition: transform 0.3s ease;
+}
+
+.btn-about:hover {
+  transform: translateX(5px);
+}
+
 
 .scroll-down-about {
   display: inline-block;
@@ -510,16 +519,28 @@ section,
   z-index: 3;
 }
 
+.hero {
+  text-align: center; /* Centra inline-blocks dentro */
+}
+
 .hero h2 {
   margin: 0;
   font-size: 48px;
-  font-weight: 300;
+  font-weight: bolder;
+  text-transform: uppercase;
+  background-color: rgb(245, 245, 245, 0.5);
+  color: var(--accent-color);
+  display: inline-block; 
+  padding: 0 20px;        
+  /* border-radius: 6px;   */
+  
 }
 
 .hero p {
   margin: 10px 0 0 0;
   font-size: 24px;
   color: var(--heading-color);
+
 }
 
 .hero .btn-get-started {
@@ -546,7 +567,9 @@ section,
 }
 
 @media (max-width: 768px) {
-  .hero h2 {
+
+  
+  .hero h2 {        
     font-size: 32px;
   }
 
@@ -562,6 +585,24 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
+.h2-about{
+  color: var(--accent-color);
+  font-weight: bolder !important;
+  text-transform: uppercase;
+}
+
+.h3-about{
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.h4-clientes{
+  margin-top: 20px;
+  margin-bottom: 60px;
+  color: var(--accent-color);
+  font-weight: 600;
+  text-transform: uppercase;
+}
 .about .content h3 {
   font-size: 1.75rem;
   font-weight: 700;
@@ -611,6 +652,14 @@ section,
   padding: 0;
 }
 
+.why-us .card {
+  transition: transform 0.4s ease; /* Suaviza la animación */
+}
+
+.why-us .card:hover {
+  transform: scale(1.04); /* Agrandamiento leve (2%) */
+}
+
 .why-us .card .icon {
   color: var(--accent-color);
   background-color: color-mix(in srgb, var(--accent-color), white 92%);
@@ -635,6 +684,12 @@ section,
   color: var(--contrast-color);
 }
 
+.h2-why-us{
+  color: var(--accent-color);
+  font-weight: bolder !important;
+  text-transform: uppercase;
+}
+
 .why-us .card h2 {
   text-align: center;
   font-weight: 700;
@@ -643,9 +698,9 @@ section,
   margin: 50px 0 12px 0;
 }
 
-.why-us .card h2 a {
+/* .why-us .card h2 a {
   color: var(--heading-color);
-}
+} */
 
 .why-us .card h2 a:hover {
   color: var(--accent-color);
@@ -656,6 +711,12 @@ section,
   line-height: 24px;
   margin-bottom: 0;
   padding: 0 30px 30px 30px;
+}
+
+ul{
+  list-style: none;
+  margin-top: 0;     
+  padding-top: 0;
 }
 
 /*--------------------------------------------------------------
@@ -697,6 +758,17 @@ section,
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
+}
+
+.h2-services{
+  color: var(--accent-color);
+  font-weight: bolder !important;
+  text-transform: uppercase;
+}
+
+.h3-services{
+  color: var(--accent-color);
+  font-weight: 700;
 }
 
 @media (min-width: 1365px) {
@@ -859,8 +931,67 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Starter Section Section
+# CARRUSEL DE LOGOS
 --------------------------------------------------------------*/
-/*.starter-section {
-   Add your styles here
-} */
+.logo-carousel {
+  overflow: hidden;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.logo-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-logos 30s linear infinite;
+  gap: 40px;
+  align-items: center;
+}
+
+.logo-img {
+  height: 80px;         
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.logo-img:hover {
+  filter: grayscale(0%);
+}
+
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/*--------------------------------------------------------------
+# CARRUSEL DE LOGOS EFECTO DESVANECIDO
+--------------------------------------------------------------*/
+
+.logo-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-carousel::before,
+.logo-carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 80px; 
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.logo-carousel::before {
+  left: 0;
+  background: linear-gradient(to right, white 0%, transparent 100%);
+}
+
+.logo-carousel::after {
+  right: 0;
+  background: linear-gradient(to left, white 0%, transparent 100%);
+}
