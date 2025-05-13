@@ -1,9 +1,9 @@
 
 /* Fonts */
 :root {
-  --default-font: "Montserrat", sans-serif,  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  /* --heading-font: "Raleway",  sans-serif;
-  --nav-font: "Poppins",  sans-serif; */
+  --default-font: "Montserrat", sans-serif;
+  --heading-font: "Montserrat", sans-serif;
+  --nav-font: "Montserrat", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -19,11 +19,11 @@
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
   --nav-color: #ffffff;  /* The default color of the main navmenu links */
-  --nav-hover-color: #065bdb; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-hover-color: #acacac; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #0a0a0a; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #065bdb; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-background-color: ##acacac; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #ffffff; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #065bdb; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-dropdown-hover-color: #acacac; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -118,6 +118,7 @@ h6 {
 # Navigation Menu
 --------------------------------------------------------------*/
 /* Navmenu */
+
 .mobile-nav-toggle {
   color: var(--nav-color);
   position: fixed;
@@ -239,6 +240,46 @@ h6 {
   transition: 0.3s;
 }
 
+@media (min-width: 992px) {
+  .mobile-nav-toggle {
+    display: none !important;
+  }
+
+  .navmenu {
+    position: static !important;
+    width: auto !important;
+    height: auto;
+    background: none;
+    display: flex !important;
+    justify-content: flex-end;
+    align-items: center;
+    transition: none;
+  }
+
+  .navmenu ul {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+  }
+
+  .navmenu a {
+    color: var(--nav-color);
+    font-size: 16px;
+    padding: 8px 12px;
+    display: inline-block;
+  }
+
+  .navmenu .active {
+    color: var(--nav-hover-color);
+    font-weight: bold;
+  }
+}
+
+
 /*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
@@ -305,6 +346,8 @@ h6 {
   color: var( --default-color);
   font-weight: bold !important;
 }
+
+
 
 /*--------------------------------------------------------------
 # Preloader
@@ -995,3 +1038,120 @@ ul{
   right: 0;
   background: linear-gradient(to left, white 0%, transparent 100%);
 }
+
+/*--------------------------------------------------------------
+# CARRUSEL TARJETAS DE SERVICIO EFECTO DESVANECIDO
+--------------------------------------------------------------*/
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f7f3f0;
+}
+
+.slider-section {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0;
+  background: #f7f3f0;
+}
+
+.slider-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #0056d2;
+}
+
+.slider-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-track {
+  display: flex;
+  gap: 20px;
+  animation: scrollSlide 15s linear infinite;
+}
+
+.slide-card {
+  flex: 0 0 300px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: left;
+  font-size: 16px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide-card i {
+  font-size: 28px;
+  color: #0056d2;
+  margin-bottom: 10px;
+}
+
+.slide-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #0056d2;
+}
+
+.slide-card p {
+  font-size: 14px;
+  color: #444;
+}
+
+@keyframes scrollSlide {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.slider-section::before,
+.slider-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.slider-section::before {
+  left: 0;
+  background: linear-gradient(to right, #f7f3f0, transparent);
+}
+
+.slider-section::after {
+  right: 0;
+  background: linear-gradient(to left, #f7f3f0, transparent);
+}
+
+.slider-track:hover {
+  animation-play-state: paused;
+}
+
+.slide-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .slide-card {
+    flex: 0 0 250px;
+  }
+}
+
+
+
+
+
+
+
+
