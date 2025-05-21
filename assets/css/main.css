@@ -989,7 +989,7 @@ ul{
 .logo-track {
   display: flex;
   width: max-content;
-  animation: scroll-logos 30s linear infinite;
+  animation: scroll-logos 40s linear infinite;
   gap: 40px;
   align-items: center;
 }
